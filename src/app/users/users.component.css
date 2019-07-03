@@ -1,0 +1,8 @@
+.user{
+    font-family: sans-serif;
+    color: brown;
+}
+
+.user.selected{
+    color: red;
+}
