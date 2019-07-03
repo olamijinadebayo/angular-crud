@@ -1,6 +1,7 @@
 .user{
     font-family: sans-serif;
     color: brown;
+    padding: 20px;
 }
 
 .user.selected{

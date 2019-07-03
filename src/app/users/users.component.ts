@@ -9,6 +9,9 @@ import { UserService} from '../user.service';
 })
 export class UsersComponent implements OnInit {
   users: User[];
+
+  submitted = false;
+    onSubmit() { this.submitted = true; }
   
   constructor(private userService:UserService) { }
 

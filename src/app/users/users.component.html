@@ -1,20 +1,44 @@
-<div>
+<!-- <div>
     <input #firstName placeholder="firstName" />
     <input #lastName placeholder="lastName" />
     <button (click)="add(firstName.value, lastName.value); firstName.value = ''; lastName.value = ''">Add</button>
-  </div>
-<ul>
-    <li class="user" 
-    [class.selected] = "selectedUser && selectedUser.firstName===user.firstName"
-    *ngFor="let user of users"
-    >
-        <input  [(ngModel)] = "user.firstName" type="text">
-        <input [(ngModel)] = "user.lastName" type="text">
-        <div (click) = "onSelectUser(user)">firstName :{{ user.firstName}}</div>
-        <div>lastName: {{ user.lastName}}</div>
-        <button (click) = "save(user)"> save</button>
-        <button (click) = "delete(user.id)"> delete</button>
-    </li>
+</div> -->
+
+<mat-card>
+        <form (ngSubmit)="onSubmit()" #regForm ="ngForm">
+                <div>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="firstname"  #firstName name="firstName" required>
+                  </mat-form-field>
+                </div>
+            
+                  
+                <div>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="lasttname" #lastName name="lastName" required>
+                  </mat-form-field>
+                </div>
+            
+                <button mat-raised-button color="primary" type="submit" [disabled]="!regForm.form.valid"  (click)="add(firstName.value, lastName.value);">Add</button>
+        </form>
+</mat-card>
+  
+
+
+<ul style="list-style: none;">
+                <li class="user" 
+                [class.selected] = "selectedUser && selectedUser.firstName===user.firstName"
+                *ngFor="let user of users">
+                    <mat-card>
+                            <input  [(ngModel)] = "user.firstName" type="text">
+                            <input [(ngModel)] = "user.lastName" type="text">
+                            <div (click) = "onSelectUser(user)">firstName :{{ user.firstName}}</div>
+                            <div>lastName: {{ user.lastName}}</div>
+                            <button (click) = "save(user)"> save</button>
+                            <button (click) = "delete(user.id)"> delete</button>
+                    </mat-card>
+                   
+                </li>
 </ul>
 
 <app-user-detail [user]="selectedUser"></app-user-detail>
